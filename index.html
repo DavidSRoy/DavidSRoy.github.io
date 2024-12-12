@@ -1,1 +1,47 @@
-Hello World
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#" onclick="openLoginWindow()" class="login-btn">Login</a></li>
+                    <li><a href="#" class="cart-btn">Cart (0)</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="products">
+                <h2>Our Products</h2>
+                <div class="product-grid">
+                    <div class="product">
+                        <img src="product1.jpeg" alt="Product 1">
+                        <h3>NovaPro Journal</h3>
+                        <p>Take your productivity to the next level with the NovaPro Laptop. Powered by up to 10th Gen Intel Core i9 processors and NVIDIA GeForce graphics.</p>
+                        <button class="add-to-cart-btn" data-product-id="1">Add to Cart</button>
+                    </div>
+                    <div class="product">
+                        <img src="product2.jpeg" alt="Product 2">
+                        <h3>X500 Smartphone</h3>
+                        <p>Experience the power of a professional-grade camera in the palm of your hand with the X500 Smartphone. With a 50MP primary sensor, 12MP front camera, and advanced AI-powered software</p>
+                        <button class="add-to-cart-btn" data-product-id="2">Add to Cart</button>
+                    </div>
+                    <div class="product">
+                        <img src="product3.jpeg" alt="Product 3">
+                        <h3>OmniSync Bundle
+                        </h3>
+                        <p>Take your tech game to the next level with our Ultimate Tech Bundle, featuring the X500 Smartphone, Omni Headset, and NovaPro Journal. This powerful trio is designed to help you work, play, and create like never before.</p>
+                        <button class="add-to-cart-btn" data-product-id="3">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
