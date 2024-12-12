@@ -102,3 +102,32 @@ header nav a {
 .product button:hover {
     background-color: #444;
 }
+
+
+.login-container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#human-button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#human-button:hover {
+    background-color: #3e8e41;
+}
+
+#login-status {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #666;
+}

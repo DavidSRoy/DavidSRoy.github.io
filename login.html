@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Page</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
     <body>
-        <button onclick="closeWindow()"> Close Window</button>
+        <div class="login-container">
+            <h2>Login Page</h2>
+            <p>Clicking the button will authenticate and return to the main page.</p>
+            <button id="human-button" onclick="closeWindow()">Click to authenticate.</button>
+            <div id="login-status"></div>
+        </div>
+        <script src="script.js"></script>
     </body>
-
-    <script src="script.js"></script>
 </html>
