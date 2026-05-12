@@ -1,54 +1,7 @@
-function parseMarkdown(text) {
-    return text.trim().split(/\n\n+/).map(para =>
-        `<p>${para.trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`
-    ).join('');
-}
-
 const PREVIEW_PARA_LIMIT = 4;
 const PREVIEW_CHAR_LIMIT = 400;
 
-async function loadPosts() {
-    const section = document.querySelector('.writing');
-    const files = await fetch('posts/index.json').then(r => r.json());
-
-    for (let i = 0; i < files.length; i++) {
-        const text = await fetch(`posts/${files[i]}`).then(r => r.text());
-        const { meta, body } = parseFrontmatter(text);
-        const article = buildArticle(meta, body, `post-${i + 1}`);
-        section.appendChild(article);
-        initPost(article);
-    }
-}
-
-function parseFrontmatter(text) {
-    const match = text.match(/^---\r?\n([\s\S]+?)\r?\n---\r?\n([\s\S]*)$/);
-    if (!match) return { meta: {}, body: text };
-    const meta = {};
-    match[1].split('\n').forEach(line => {
-        const colon = line.indexOf(':');
-        if (colon > 0) meta[line.slice(0, colon).trim()] = line.slice(colon + 1).trim();
-    });
-    return { meta, body: match[2] };
-}
-
-function buildArticle(meta, body, id) {
-    const article = document.createElement('article');
-    article.className = 'post';
-    article.id = id;
-    const metaParts = [meta.category, meta.date && meta.date.replace(/-/g, '.')].filter(Boolean);
-    article.innerHTML = `
-        <h3>${meta.title || ''}</h3>
-        <div class="meta">${metaParts.join(' · ')}</div>
-        <div class="content">${parseMarkdown(body)}</div>
-        <div class="actions">
-            <button class="more-btn">More</button>
-            <button class="share-btn">Share</button>
-        </div>
-    `;
-    return article;
-}
-
-function initPost(post) {
+document.querySelectorAll('.post').forEach(post => {
     const content = post.querySelector('.content');
     const moreBtn = post.querySelector('.more-btn');
     const shareBtn = post.querySelector('.share-btn');
@@ -79,6 +32,4 @@ function initPost(post) {
             setTimeout(() => shareBtn.textContent = orig, 1500);
         });
     });
-}
-
-loadPosts();
+});
