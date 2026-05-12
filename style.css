@@ -166,11 +166,6 @@ footer {
 
 .post h3 a {
     color: inherit;
-    text-decoration: none;
-}
-
-.post h3 a:hover {
-    color: var(--accent);
 }
 
 .back-nav {
