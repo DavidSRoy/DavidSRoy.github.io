@@ -6,6 +6,7 @@
 
 :root {
     --bg: #FAFAFA;
+    --card: #FFFFFF;
     --text: #1A1A1A;
     --accent: #1E90FF;
     --muted: #666;
@@ -15,9 +16,10 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: #0A0A0A;
-        --text: #EDEDED;
-        --muted: #999;
-        --border: #222;
+        --card: #111111;
+        --text: #E6E6E6;
+        --muted: #A0A0A0;
+        --border: #1F1F1F;
     }
 }
 
@@ -77,6 +79,7 @@ h2 {
 }
 
 .post {
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: 24px;
