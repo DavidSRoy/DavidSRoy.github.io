@@ -1,6 +1,6 @@
 ---
 title: One Year at Meta
-date: 2025.05
+date: 2025-02-05
 category: Reflection
 ---
 

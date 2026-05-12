@@ -29,7 +29,7 @@ function buildArticle(meta, body, id) {
     const article = document.createElement('article');
     article.className = 'post';
     article.id = id;
-    const metaParts = [meta.category, meta.date].filter(Boolean);
+    const metaParts = [meta.category, meta.date && meta.date.replace(/-/g, '.')].filter(Boolean);
     article.innerHTML = `
         <h3>${meta.title || ''}</h3>
         <div class="meta">${metaParts.join(' · ')}</div>
