@@ -25,7 +25,7 @@ document.querySelectorAll('.post').forEach(post => {
     });
 
     shareBtn.addEventListener('click', () => {
-        const url = `${window.location.origin}${window.location.pathname}#${post.id}`;
+        const url = `${window.location.origin}${post.dataset.permalink}`;
         navigator.clipboard.writeText(url).then(() => {
             const orig = shareBtn.textContent;
             shareBtn.textContent = 'Link copied';
