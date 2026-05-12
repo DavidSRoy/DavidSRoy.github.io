@@ -1,32 +1,35 @@
-// Initialize cart
-let cart = [];
+const PREVIEW_CHAR_LIMIT = 400;
+const PREVIEW_PARA_LIMIT = 4;
 
-// Function to add product to cart
-function addProductToCart(productId) {
-    // Check if product is already in cart
-    if (cart.includes(productId)) {
-        alert("Product is already in cart!");
-        return;
+document.querySelectorAll('.post').forEach(post => {
+    const content = post.querySelector('.content');
+    const moreBtn = post.querySelector('.more-btn');
+    const shareBtn = post.querySelector('.share-btn');
+    const paragraphs = content.querySelectorAll('p');
+
+    let totalChars = 0;
+    paragraphs.forEach(p => totalChars += p.textContent.length);
+
+    const needsTruncate = paragraphs.length > PREVIEW_PARA_LIMIT || totalChars > PREVIEW_CHAR_LIMIT;
+
+    if (needsTruncate) {
+        content.classList.add('truncated');
+        moreBtn.style.display = 'inline';
+    } else {
+        moreBtn.style.display = 'none';
     }
 
-    // Add product to cart
-    cart.push(productId);
+    moreBtn.addEventListener('click', () => {
+        content.classList.toggle('truncated');
+        moreBtn.textContent = content.classList.contains('truncated') ? 'More' : 'Less';
+    });
 
-    // Update cart button text
-    document.querySelector(".cart-btn").textContent = `Cart (${cart.length})`;
-}
-
-// Add event listeners to add to cart buttons
-document.querySelectorAll(".add-to-cart-btn").forEach(button => {
-    button.addEventListener("click", () => {
-        addProductToCart(button.dataset.productId);
+    shareBtn.addEventListener('click', () => {
+        const url = `${window.location.origin}${window.location.pathname}#${post.id}`;
+        navigator.clipboard.writeText(url).then(() => {
+            const originalText = shareBtn.textContent;
+            shareBtn.textContent = 'Link copied';
+            setTimeout(() => shareBtn.textContent = originalText, 1500);
+        });
     });
 });
-
-function openLoginWindow() {
-    window.open("login.html", "Login");
-}
-
-function closeWindow() {
-    window.close();
-}
