@@ -164,6 +164,37 @@ footer {
     }
 }
 
+.post h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.post h3 a:hover {
+    color: var(--accent);
+}
+
+.back-nav {
+    margin-bottom: 40px;
+}
+
+.back-nav a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 200ms ease;
+}
+
+.back-nav a:hover {
+    color: var(--accent);
+}
+
+.post-full h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
 .socials {
     margin-bottom: 8px;
 }
