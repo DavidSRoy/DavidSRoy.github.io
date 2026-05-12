@@ -1,3 +1,9 @@
+function parseMarkdown(text) {
+    return text.trim().split(/\n\n+/).map(para =>
+        `<p>${para.trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`
+    ).join('');
+}
+
 const PREVIEW_PARA_LIMIT = 4;
 const PREVIEW_CHAR_LIMIT = 400;
 
@@ -33,7 +39,7 @@ function buildArticle(meta, body, id) {
     article.innerHTML = `
         <h3>${meta.title || ''}</h3>
         <div class="meta">${metaParts.join(' · ')}</div>
-        <div class="content">${marked.parse(body)}</div>
+        <div class="content">${parseMarkdown(body)}</div>
         <div class="actions">
             <button class="more-btn">More</button>
             <button class="share-btn">Share</button>
